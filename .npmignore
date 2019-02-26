@@ -1,2 +1,5 @@
-build/
+dist/
 tests/
+.editorconfig
+.prettierrc
+.travis.yml
