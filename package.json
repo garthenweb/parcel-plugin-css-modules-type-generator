@@ -1,0 +1,41 @@
+{
+  "name": "parcel-plugin-css-modules-type-generator",
+  "version": "1.0.0",
+  "description": "Generates .d.ts files for your CSS modules with Parcel",
+  "main": "src/index.js",
+  "scripts": {
+    "pretest": "find tests/** -name '*.d.ts' -delete",
+    "test": "node tests/index.test.js",
+    "fmt": "prettier --write \"src/*.js\" \"tests/**/*.js\"",
+    "preversion": "npm test",
+    "postversion": "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/garthenweb/parcel-plugin-css-modules-type-generator"
+  },
+  "bugs": {
+    "url": "https://github.com/garthenweb/parcel-plugin-css-modules-type-generator/issues"
+  },
+  "engines": {
+    "node": "^10.13.0"
+  },
+  "keywords": [
+    "parcel",
+    "css",
+    "modules",
+    "css-modules",
+    "typescript",
+    "types"
+  ],
+  "author": "Jannick Garthen <jannick.garthen@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "parcel-bundler": "^1.11.0",
+    "postcss-modules": "^1.4.1",
+    "prettier": "^1.16.4"
+  },
+  "peerDependencies": {
+    "parcel-bundler": "^1.11.0"
+  }
+}

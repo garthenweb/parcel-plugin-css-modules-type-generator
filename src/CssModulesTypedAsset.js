@@ -1,0 +1,34 @@
+const fs = require('fs');
+const os = require('os');
+const util = require('util');
+
+const CSSAsset = require('parcel-bundler/src/assets/CSSAsset');
+const writeFile = util.promisify(fs.writeFile);
+
+const writeDTSFile = (filename, keys) => {
+  if (keys.length === 0) {
+    return;
+  }
+  const dtsFile = keys
+    .map(key => {
+      return key.replace(/-+(\w)/g, (match, firstLetter) => {
+        return firstLetter.toUpperCase();
+      });
+    })
+    .reduce((file, key) => `${file}export const ${key}: string;${os.EOL}`, '');
+  return writeFile(filename, dtsFile, { encoding: 'utf8', flag: 'w' });
+};
+
+module.exports = class CssModulesTypedAsset extends CSSAsset {
+  async generate() {
+    const result = await super.generate();
+    if (this.cssModules) {
+      try {
+        await writeDTSFile(`${this.name}.d.ts`, Object.keys(this.cssModules));
+      } catch (e) {
+        console.error(`Could not create .d.ts file for ${this.name}`, e);
+      }
+    }
+    return result;
+  }
+};
