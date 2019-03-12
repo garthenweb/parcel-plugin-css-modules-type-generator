@@ -18,7 +18,7 @@
     "url": "https://github.com/garthenweb/parcel-plugin-css-modules-type-generator/issues"
   },
   "engines": {
-    "node": ">= 10.13.0"
+    "node": "^8.9.0 || >= 10.13.0"
   },
   "keywords": [
     "parcel",
