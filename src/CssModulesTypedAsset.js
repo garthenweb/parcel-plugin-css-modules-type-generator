@@ -5,7 +5,7 @@ const util = require('util');
 const CSSAsset = require('parcel-bundler/src/assets/CSSAsset');
 const writeFile = util.promisify(fs.writeFile);
 
-const writeDTSFile = (filename, keys, { camelCase } = {}) => {
+const writeDTSFile = (filename, keys) => {
   if (keys.length === 0) {
     return;
   }
