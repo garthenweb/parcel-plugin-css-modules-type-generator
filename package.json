@@ -1,7 +1,7 @@
 {
   "name": "parcel-plugin-css-modules-type-generator",
   "version": "1.0.2",
-  "description": "Generates .d.ts files for your CSS modules with Parcel",
+  "description": "Generates .d.ts files for CSS modules with Parcel",
   "main": "src/index.js",
   "scripts": {
     "pretest": "find tests/** -name '*.d.ts' -delete",
