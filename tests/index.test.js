@@ -6,16 +6,13 @@ const assert = require('assert');
 const plugin = require('../src/index');
 
 const bundle = async entry => {
-  const bundler1 = new Bundler(
-    path.join(__dirname, './css-modules.fixtures/index.js'),
-    {
-      watch: false,
-      cache: false,
-    },
-  );
-  plugin(bundler1);
+  const bundler = new Bundler(path.join(__dirname, entry), {
+    watch: false,
+    cache: false,
+  });
+  plugin(bundler);
 
-  await bundler1.bundle();
+  await bundler.bundle();
 };
 
 (async () => {
