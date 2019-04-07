@@ -5,17 +5,17 @@ const util = require('util');
 const CSSAsset = require('parcel-bundler/src/assets/CSSAsset');
 const writeFile = util.promisify(fs.writeFile);
 
-const writeDTSFile = (filename, keys) => {
+const writeDTSFile = (filename, keys, { camelCase } = {}) => {
   if (keys.length === 0) {
     return;
   }
-  const dtsFile = keys
-    .map(key => {
-      return key.replace(/-+(\w)/g, (match, firstLetter) => {
-        return firstLetter.toUpperCase();
-      });
-    })
-    .reduce((file, key) => `${file}export const ${key}: string;${os.EOL}`, '');
+  const declares = keys.reduce(
+    (file, key) => `${file}  readonly "${key}": string;${os.EOL}`,
+    '',
+  );
+  const dtsFile = `declare const styles: {${os.EOL}${declares}};${
+    os.EOL
+  }export = styles;`;
   return writeFile(filename, dtsFile, { encoding: 'utf8', flag: 'w' });
 };
 

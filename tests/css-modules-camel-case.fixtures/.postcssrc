@@ -1,0 +1,8 @@
+{
+  "modules": true,
+  "plugins": {
+    "postcss-modules":{
+      "camelCase": true
+    }
+  }
+}

@@ -24,11 +24,18 @@ const bundle = async entry => {
     'utf8',
   );
 
-  assert(file.includes('export const test1: string;'));
-  assert(file.includes('export const test2: string;'));
-  assert(file.includes('export const test3: string;'));
+  assert(
+    file.includes(`declare const styles: {
+  readonly "test1": string;
+  readonly "test2": string;
+  readonly "test3": string;
+  readonly "test-test": string;
+  readonly "test-4": string;
+};
+export = styles;`),
+  );
 
-  // should ignore
+  // should not create d.ts file
   await bundle('./without-css-modules.fixtures/index.js');
 
   const exists = fs.existsSync(
@@ -37,5 +44,25 @@ const bundle = async entry => {
 
   assert(!exists);
 
-  console.log('2/2 test passed');
+  // should create d.ts file with camel cased class names
+  await bundle('./css-modules-camel-case.fixtures/index.js');
+
+  const fileCamelCase = fs.readFileSync(
+    path.join(__dirname, './css-modules-camel-case.fixtures/test.css.d.ts'),
+    'utf8',
+  );
+  assert(
+    fileCamelCase.includes(`declare const styles: {
+  readonly "test1": string;
+  readonly "test2": string;
+  readonly "test3": string;
+  readonly "test-test": string;
+  readonly "test-4": string;
+  readonly "testTest": string;
+  readonly "test4": string;
+};
+export = styles;`),
+  );
+
+  console.log('3/3 test passed');
 })();
