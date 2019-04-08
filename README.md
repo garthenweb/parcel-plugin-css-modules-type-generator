@@ -11,7 +11,7 @@ This plugin is inspired by [typed-css-modules](https://www.npmjs.com/package/typ
 
 As Parcel already handles watching of files and generates CSS modules this plugin is super easy to use and works out of the box, you don't need to run tasks in parallel while working on your code to get proper types.
 
-Further is supports all kind of extensions that compile to CSS (only those that are supported by Parcel) out of the 📦, e.g. scss, less and stylus.
+Further it supports all kind of extensions that compile to CSS (only those that are supported by Parcel) out of the 📦, e.g. scss, less and stylus.
 
 ## Installation
 
