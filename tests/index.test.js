@@ -1,4 +1,11 @@
-const Bundler = require('parcel-bundler');
+const helpers = require('../src/helpers');
+let Bundler = undefined;
+if (helpers.moduleExists('parcel-bundler')) {
+  Bundler = require('parcel-bundler');
+} else {
+  Bundler = require('parcel');
+}
+
 const path = require('path');
 const fs = require('fs');
 const assert = require('assert');

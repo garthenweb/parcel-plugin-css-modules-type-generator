@@ -31,11 +31,12 @@
   "author": "Jannick Garthen <jannick.garthen@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "parcel-bundler": "^1.12.3",
+    "parcel": "^1.12.4",
+    "parcel-bundler": "npm:parcel@^1.12.4",
     "postcss-modules": "^1.4.1",
     "prettier": "^1.16.4"
   },
   "peerDependencies": {
-    "parcel-bundler": "^1.11.0"
+    "parcel-bundler": "npm:parcel@^1.12.4"
   }
 }

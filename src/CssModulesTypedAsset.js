@@ -1,8 +1,15 @@
 const fs = require('fs');
 const os = require('os');
 const util = require('util');
+const helpers = require('./helpers');
 
-const CSSAsset = require('parcel-bundler/src/assets/CSSAsset');
+let CSSAsset = undefined;
+if (helpers.moduleExists('parcel-bundler')) {
+  CSSAsset = require('parcel-bundler/src/assets/CSSAsset');
+} else {
+  CSSAsset = require('parcel/src/assets/CSSAsset');
+}
+
 const writeFile = util.promisify(fs.writeFile);
 
 const writeDTSFile = (filename, keys) => {
