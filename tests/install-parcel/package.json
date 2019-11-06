@@ -1,0 +1,13 @@
+{
+  "name": "install-parcel",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "pretest": "rm -rf ./dist",
+    "test": "parcel build ./index.js --no-cache && test -f test.css.d.ts"
+  },
+  "devDependencies": {
+    "parcel": "^1.12.4",
+    "parcel-plugin-css-modules-type-generator": "file:../../."
+  }
+}

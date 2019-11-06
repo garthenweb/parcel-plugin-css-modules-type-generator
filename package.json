@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "pretest": "find tests/** -name '*.d.ts' -delete",
-    "test": "node tests/index.test.js",
+    "test": "node tests/index.test.js && cd ./tests/install-parcel && npm ci && npm test && cd ../install-parcel-bundler && npm ci && npm test",
     "fmt": "prettier --write \"src/*.js\" \"tests/**/*.js\"",
     "preversion": "npm test",
     "postversion": "git push && git push --tags"
