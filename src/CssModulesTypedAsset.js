@@ -2,13 +2,7 @@ const fs = require('fs');
 const os = require('os');
 const util = require('util');
 const helpers = require('./helpers');
-
-let CSSAsset = undefined;
-if (helpers.moduleExists('parcel-bundler')) {
-  CSSAsset = require('parcel-bundler/src/assets/CSSAsset');
-} else {
-  CSSAsset = require('parcel/src/assets/CSSAsset');
-}
+const CSSAsset = helpers.requireBundler('src/assets/CSSAsset');
 
 const writeFile = util.promisify(fs.writeFile);
 

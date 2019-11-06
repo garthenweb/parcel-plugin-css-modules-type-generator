@@ -1,16 +1,11 @@
 const helpers = require('../src/helpers');
-let Bundler = undefined;
-if (helpers.moduleExists('parcel-bundler')) {
-  Bundler = require('parcel-bundler');
-} else {
-  Bundler = require('parcel');
-}
-
 const path = require('path');
 const fs = require('fs');
 const assert = require('assert');
 
 const plugin = require('../src/index');
+
+const Bundler = helpers.requireBundler();
 
 const bundle = async entry => {
   const bundler = new Bundler(path.join(__dirname, entry), {
@@ -23,6 +18,9 @@ const bundle = async entry => {
 };
 
 (async () => {
+  // make sure one of the required packages was loaded
+  assert (Bundler);
+
   // should create d.ts file
   await bundle('./css-modules.fixtures/index.js');
 
@@ -71,5 +69,5 @@ export = styles;`),
 export = styles;`),
   );
 
-  console.log('3/3 test passed');
+  console.log('4/4 tests passed');
 })();
