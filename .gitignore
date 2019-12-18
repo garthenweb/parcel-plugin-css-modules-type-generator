@@ -1,4 +1,3 @@
 dist/
 tests/**/*.d.ts
-tests/**/package-lock.json
 node_modules/
