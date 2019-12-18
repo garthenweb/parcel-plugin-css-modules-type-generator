@@ -33,7 +33,7 @@
   "devDependencies": {
     "parcel-bundler": "^1.12.4",
     "postcss-modules": "^1.4.1",
-    "prettier": "^1.16.4"
+    "prettier": "^1.19.1"
   },
   "peerDependencies": {
     "parcel-bundler": "^1.11.0"

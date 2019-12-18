@@ -14,9 +14,7 @@ const writeDTSFile = (filename, keys) => {
     (file, key) => `${file}  readonly "${key}": string;${os.EOL}`,
     '',
   );
-  const dtsFile = `declare const styles: {${os.EOL}${declares}};${
-    os.EOL
-  }export = styles;`;
+  const dtsFile = `declare const styles: {${os.EOL}${declares}};${os.EOL}export = styles;`;
   return writeFile(filename, dtsFile, { encoding: 'utf8', flag: 'w' });
 };
 

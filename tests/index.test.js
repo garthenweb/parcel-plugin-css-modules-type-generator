@@ -19,7 +19,7 @@ const bundle = async entry => {
 
 (async () => {
   // make sure one of the required packages was loaded
-  assert (Bundler);
+  assert(Bundler);
 
   // should create d.ts file
   await bundle('./css-modules.fixtures/index.js');
